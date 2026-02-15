@@ -151,12 +151,31 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(to right, #0ea5e9, #3b82f6, #4f46e5);
+  background: linear-gradient(135deg, rgba(79,70,229,0.95), rgba(59,130,246,0.90) 50%, rgba(14,165,233,0.88));
   color: white;
   padding: 5rem 1.5rem;
   padding-top: calc(5rem + 80px);
   text-align: center;
   margin-top: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.02) 0 1px,
+    transparent 1px 40px
+  ), radial-gradient(circle at 10% 10%, rgba(255,255,255,0.03), transparent 25%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  mix-blend-mode: overlay;
+}
+
+.hero-title {
+  text-shadow: 0 6px 18px rgba(0,0,0,0.18);
 }
 
 .hero-title {
