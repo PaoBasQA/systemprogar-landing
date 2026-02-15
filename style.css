@@ -43,7 +43,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: #e5e7eb;
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -153,8 +153,8 @@ body {
 .hero {
   background: linear-gradient(135deg, #6366f1, #3b82f6 50%, #0ea5e9);
   color: white;
-  padding: 1.5rem 1.5rem;
-  padding-top: calc(1.5rem + 80px);
+  padding: 4rem 1.5rem;
+  padding-top: calc(4rem + 80px);
   text-align: center;
   margin-top: 0;
   position: relative;
@@ -711,9 +711,14 @@ body {
 /* Contenedor para Lottie en el hero */
 #hero-lottie {
   flex: 0 1 40%;
-  z-index: 1;
+  z-index: 10;
   pointer-events: none;
-  min-height: 80px;
+  min-height: 60px;
+  max-height: 150px;
+  overflow: visible;
+  transform: scale(0.31);
+  transform-origin: center;
+  margin-top: -25rem;
 }
 
 .hero-content {
@@ -736,5 +741,5 @@ body {
 }
 
 @media (max-width: 767px) {
-  #hero-lottie { opacity: 0.8; min-height: 250px; }
+  #hero-lottie { opacity: 0.8; min-height: 60px; max-height: 90px; }
 }
