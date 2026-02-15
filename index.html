@@ -48,9 +48,14 @@
 
   <!-- Hero -->
   <section id="inicio" class="hero">
-    <h1 class="hero-title">SystemProgAr</h1>
-    <p class="hero-subtitle">Tu web, tu centro digital. Conectamos tu marca.</p>
-    <a href="contacto.html" class="btn-cta">Contáctanos</a>
+    <!-- Contenedor para Lottie (carga desde CDN) -->
+    <div id="hero-lottie" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-title">SystemProgAr</h1>
+      <p class="hero-subtitle">Tu web, tu centro digital. Conectamos tu marca.</p>
+      <a href="contacto.html" class="btn-cta">Contáctanos</a>
+    </div>
   </section>
 
   <!-- Sobre Nosotros -->
@@ -191,6 +196,45 @@
         }
       });
     });
-  </script>
+
+    // Inicializar Lottie en el hero (carga CDN si hace falta)
+      (function(){
+        const containerId = 'hero-lottie';
+        const path = 'assets/hero-animation.json';
+        function initLottie(){
+          const c = document.getElementById(containerId);
+          if (!c) return;
+          if (window.innerWidth < 600) return; // evitar en móviles pequeños
+          if (typeof lottie === 'undefined') return;
+          lottie.loadAnimation({
+            container: c,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path
+          });
+          c.style.transition = 'transform 0.15s linear';
+          const onMove = (e) => {
+            const rect = c.getBoundingClientRect();
+            const cx = rect.left + rect.width/2;
+            const cy = rect.top + rect.height/2;
+            const clientX = ('touches' in e && e.touches.length) ? e.touches[0].clientX : e.clientX;
+            const clientY = ('touches' in e && e.touches.length) ? e.touches[0].clientY : e.clientY;
+            const x = (clientX - cx) * 0.02;
+            const y = (clientY - cy) * 0.01;
+            c.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+          };
+          window.addEventListener('mousemove', onMove);
+          window.addEventListener('touchmove', onMove, { passive: true });
+        }
+
+        if (typeof lottie === 'undefined'){
+          const s = document.createElement('script');
+          s.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js';
+          s.onload = initLottie;
+          document.body.appendChild(s);
+        } else initLottie();
+      })();
+    </script>
 </body>
 </html>

@@ -151,27 +151,28 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, rgba(79,70,229,0.95), rgba(59,130,246,0.90) 50%, rgba(14,165,233,0.88));
+  background: linear-gradient(135deg, #6366f1, #3b82f6 50%, #0ea5e9);
   color: white;
-  padding: 5rem 1.5rem;
-  padding-top: calc(5rem + 80px);
+  padding: 1.5rem 1.5rem;
+  padding-top: calc(1.5rem + 80px);
   text-align: center;
   margin-top: 0;
   position: relative;
-  overflow: hidden;
 }
 
-.hero::after {
-  content: "";
+.hero::before {
+  content: '';
   position: absolute;
   inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shine 3s infinite;
   pointer-events: none;
-  background-image: repeating-linear-gradient(
-    45deg,
-    rgba(255,255,255,0.02) 0 1px,
-    transparent 1px 40px
-  ), radial-gradient(circle at 10% 10%, rgba(255,255,255,0.03), transparent 25%), linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
-  mix-blend-mode: overlay;
+  display: none;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .hero-title {
@@ -179,25 +180,25 @@ body {
 }
 
 .hero-title {
-  font-size: 2.5rem;
+  font-size: 1.875rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 @media (min-width: 768px) {
   .hero-title {
-    font-size: 3.75rem;
+    font-size: 2.5rem;
   }
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 @media (min-width: 768px) {
   .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
   }
 }
 
@@ -705,4 +706,35 @@ body {
 
 .popup-btn:hover {
   background-color: #2563eb;
+}
+
+/* Contenedor para Lottie en el hero */
+#hero-lottie {
+  flex: 0 1 40%;
+  z-index: 1;
+  pointer-events: none;
+  min-height: 80px;
+}
+
+.hero-content {
+  flex: 1 1 50%;
+  z-index: 2;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1023px) {
+  #hero-lottie { flex: 0 1 100%; }
+  .hero-content { flex: 0 1 100%; }
+  .hero { gap: 1rem; }
+}
+
+@media (max-width: 767px) {
+  #hero-lottie { opacity: 0.8; min-height: 250px; }
 }
