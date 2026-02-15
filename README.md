@@ -32,7 +32,7 @@ Inspirado en la diversidad de Argentina:
 ## 📬 Contacto
 ✉️ **Email**: systemprogar@gmail.com  
 🔗 **Redes sociales**:  
-[Facebook](#) | [Instagram](#) | [LinkedIn](#)
+[Facebook](https://www.facebook.com/profile.php?id=61588097072426) | [Instagram](https://www.instagram.com/systemprogar/)
 
 ---
 
